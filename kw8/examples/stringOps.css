@@ -1,0 +1,5 @@
+div {
+  pointer: pointer; }
+
+div:before {
+  content: "3 Lutscher genascht"; }

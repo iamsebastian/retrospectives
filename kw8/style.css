@@ -1,0 +1,115 @@
+/*=======================================================================
+=            colours
+
+#F1F0F4		white
+#504B58		grey
+#262626		grey-darker
+#FF424B		red
+#008B8B		teal
+#006A76     teal-darker 
+#BDFDAD		green vintage  
+=
+=======================================================================*/
+
+@font-face {
+	font-family: 'Aleo';
+	src: url('fonts/Aleo-Regular.otf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Aleo';
+	src: url('fonts/Aleo-Bold.otf') format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Aleo';
+	src: url('fonts/Aleo-Italic.otf') format('truetype');
+	font-style: italic;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'FiraMono';
+	src: url('fonts/FiraMono-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'FiraMono';
+	src: url('fonts/FiraMono-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+
+
+body.single_slide {
+	position: relative;
+	font-family: 'Aleo', Arial;
+	background-color: #262626;
+	color: #F1F0F4;
+}
+
+div.slide {
+	position: absolute;
+	margin: auto;
+	left: 0;top: 0;bottom: 0;right: 0;
+	padding: 1% 0;
+	width: 91%;
+	height: 600px;
+	font-size: 1.6rem;
+	/*background-color: hsla(0,0%,0%,.01);*/
+}
+
+div.slide h1 {
+	font-size: 240%;
+	line-height: 100%;
+}
+
+div.slide h2 {
+	font-size: 180%;
+	line-height: 200%;
+}
+
+div.slide h3 {
+	font-size: 140%;
+	font-style: italic;
+}
+
+div.slide strong {
+	color: #FF424B;
+	font-weight: normal;
+}
+
+/*div.slide span {
+	color: #FF424B;
+	background-color: hsla(0,0%,100%,.1);
+	padding: .4rem;
+	border: 2px dashed hsla(0,0%,100%,.2);
+    border-radius: 1rem 1rem 0;
+}*/
+
+div.slide span {
+	font-weight: normal;
+}
+
+div.slide pre {
+	/*padding: .8rem 1.2rem;*/
+	background-color: hsla(0,0%,0%,.9);
+	border: 1px dashed hsla(0,0%,100%,.4);
+	border-left: 16px solid hsla(0,0%,100%,.2);
+	color: #7DFDCD;
+	font-family: 'FiraMono';
+	font-weight: normal;
+	letter-spacing: .5px;
+}
+
+div.slide pre code {
+	font-family: 'FiraMono';
+	font-weight: normal;
+	letter-spacing: .5px;
+}

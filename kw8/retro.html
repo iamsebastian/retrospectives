@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head> 
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>My Slides</title> 
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" 
+     href="slidy.css" />
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" 
+     href="style.css" />
+    <script src="showdown.js"></script>
+    <script src="slidy.js"></script>
+    
+</head>
+<body>
+<script type=text/markdown>
+<!--
+
+Welcome to **» TecDay Nov13**
+=======================
+
+Thema: **SASS**
+---------------
+
+>> (Syntactically Awesome StyleSheets)
+
+>> **Sass makes CSS fun again.**  
+
+>> ### Ein CSS-Präprozessor.
+
+-----------------------------------------------------
+
+Bringt mit
+==========
+
++   Variablen
++   Regeln durch Einrücken » **nestings**
++   Hinzumischen definierter Inhalte » **mixins**
++   *inline* - Importe
++   output-encoding = input-encoding
+    + normal & fallback: UTF-8
+
+-----------------------------------------------------
+
+Nützliche Funktionen
+====================
+
++   Manipulieren von Farben und Werten
++   Kontrolldirektiven
++   kann *Rechnen*
++   debugging
+
+-----------------------------------------------------
+
+Syntax
+======
+
+SCSS » .**scss**
+----------------
+
+SASS » .**sass**
+----------------
+
+**sass-convert** » cmd-line-tool kann die Formaten konvertieren
+
+-----------------------------------------------------
+
+SCSS » .**scss**
+================
+
++   Valides CSS**3** ist auch valides SCSS
++   *versteht* die meisten CSS Hacks & *IEs old filter Syntax*
+
+-----------------------------------------------------
+
+SASS » .**sass**
+================
+
++   die ältere Syntax
++   bekannt als die *eingerückte* Syntax
++   verwendet Einrückung als Klammerersatz
+    +   wendet entsprechend Regeln an » **nesting**
+
+-----------------------------------------------------
+
+nesting
+=======
+
+.**sass**
+```ul
+  li
+    .item
+      font:
+        family: serif
+        weight: bold
+        size: 1.2em
+    .item2
+      background:
+        color: #000  ```
+
+.**css**
+```ul li .item {
+  font-family: serif;
+  font-weight: bold;
+  font-size: 1.2em; }
+ul li .item2 {
+  background-color: black; }
+```
+
+-----------------------------------------------------
+
+referenzierter Eltern-Zugriff
+=============================
+
+.**sass**
+```p
+    color: white
+    font-weight: bold
+    span
+        color: gray
+        &:before
+            content: "Span folgt ..."```
+
+.**css**
+```p {
+  color: white;
+  font-weight: bold; }
+  p span {
+    color: gray; }
+    p span:before {
+      content: "Span folgt ..."; }```
+
+-----------------------------------------------------
+
+Kommentare
+==========
+
+Nur mehrzeilige Kommentare werden beibehalten.
+
+.**sass**
+```/*   Ein
+    Multi
+    line
+    eintrag */
+//  Ein Singlelineeintrag
+//  , sowie, ein zweiter.``
+
+.**css**
+```/*   Ein
+ * Multi
+ * line
+ * eintrag */```
+
+-----------------------------------------------------
+
+Variablen
+=========
+
+.**sass**
+```$blue: #3bbfce
+.content_navigation
+  border-color: $blue
+  color: darken($blue, 10%)
+```
+
+.**scss**
+```$blue: #3bbfce;
+.content_navigation {
+  border-color: $blue;
+  color: darken($blue, 10%);
+}
+```
+
+.**css**
+```.content_navigation {
+  border-color: #3bbfce;
+  color: #2b9eab; }
+```
+
+-----------------------------------------------------
+
+Datentypen
+==========
+
++ Nummern *(1, 3em, 3, 7px)*
++ Strings, mit und ohne **" "**, **' '** *("foo", 'bar', Klaus)*
++ colours *(blue, #25C, rgba(31, 79, 207))*
++ boole *(false, true)*
++ nulls *(null)*
++ Wertelisten *(1rem .2rem 1.2rem .3rem, Arial, Georgia, sans-serif...)*
+
+-----------------------------------------------------
+
+mixins
+======
+
+.**sass**
+```@mixin left($dist)
+  float: left
+  margin-left: $dist
+.oneDiv
+  @include left(10px)
+```
+
+.**scss**
+```@mixin left($dist) {
+  float: left;
+  margin-left: $dist;
+}
+.oneDiv {
+  @include left(10px);
+}
+```
+
+.**css**
+```.oneDiv {
+  float: left;
+  margin-left: 10px; }
+```
+
+-----------------------------------------------------
+
+String Operations
+=================
+
+.**sass**
+```div
+    pointer: p + ointer
+div:before
+    content: "#{1+1+1} Lutscher genascht"```
+
+.**css**
+```div {
+  pointer: pointer; }
+div:before {
+  content: "3 Lutscher genascht; }"```
+
+-----------------------------------------------------
+
+Klammern
+========
+
+.**sass**
+```span
+    color: (#010101 + #101010) * 3```
+
+.**css**
+```span {
+  color: #333333; }```
+
+-----------------------------------------------------
+
+Boolesche Operationen
+=====================
+
+.**sass**
+```h3.dosentitel
+    font-size: (1 and 1) or (0 or 0) rem```
+
+.**css**
+```h3.dosentitel {
+  font-size: 1 rem; }```
+
+-----------------------------------------------------
+
+Funktionen
+==========
+
+.**sass**
+```circle.orange
+    fill: hsla(37, 43%, 57%, .3)
+path.orange
+    stroke: hsl(37, 43%, 57%)```
+
+.**css**
+```circle.orange {
+  fill: rgba(192, 156, 98, 0.3); }
+path.orange {
+  stroke: #c09c62; }```
+
+-----------------------------------------------------
+
+!defaults
+=========
+
+.**sass**
+```$colour: "white" !default
+$colour: "black"
+span.shadow
+    background-color: $colour```
+
+.**css**
+```span.shadow {
+  background-color: "black"; }```
+
+-----------------------------------------------------
+
+@import
+=======
+
++ importierte Sass Dateien werden zu einer einzelnen CSS Datei zusammengefügt
++ deklarierte Variablen & Mixins können verwendet werden
+
+.**sass**
+```$family: unquote("Droid+Sans")
+@import url("http://fonts.googleapis.com/css?family=#{$family}")```
+
+.**css**
+```@import url("http://fonts.googleapis.com/css?family=Droid+Sans");```
+
+-----------------------------------------------------
+
+partials
+========
+
++ Sass Dateien, die importiert aber nicht kompiliert werden sollen, beginnen mit einem **_** *(underscore)*
++ eine zweite Datei mit gleichem Namen, aber ohne initialisierendes **_** darf es nicht geben
+
+.**sass**
+```@import colours```
+würde die Datei *_colours.sass* importieren
+
+-----------------------------------------------------
+
+partials - Beispiel
+===================
+
+_colours.**sass**
+```.colour1
+    color: teal```
+
+dann import in .**sass**
+```#main
+    @import colours```
+
+würde kompilieren zu .**css**
+```#main .colour1
+    color: teal```
+
+-----------------------------------------------------
+
+partials - **8**ung:
+====================
+
+@import ist in Mixins und Direktiven nicht gestattet
+
+-----------------------------------------------------
+
+@media
+======
+
+Direktiven verhalten sich wie in CSS, können aber verschachtelt werden
+
+.**sass**
+```.panel
+    width: 300px
+    @media screen
+        width: 200px
+        @media (orientation: landscape)
+            width: 250px```
+
+.**css**
+```.panel {
+  width: 300px; }
+  @media screen {
+    .panel {
+      width: 200px; } }
+    @media screen and (orientation: landscape) {
+      .panel {
+        width: 250px; } }```
+
+-----------------------------------------------------
+
+@extend
+=======
+
+Der semantisch falsche, bisherige Weg
+
+```<note class="gelbeKarte">Du hast nicht zugehört!</note>
+<note class="gelbeKarte roteKarte">Du bist draußen!</note>```
+
+.**css**
+```.gelbeKarte {
+  border: 2px solid #ccaa22;
+  border-radius: 8px;}
+.roteKarte {
+  border-color: #ccaa22;}```
+
+-----------------------------------------------------
+
+... @extend
+===========
+
+Der semantisch korrekte, neue Weg:
+
+```<note class="gelbeKarte">Du hast nicht zugehört!</note>
+<note class="roteKarte">Du bist draußen!</note>```
+
+.**sass**
+```.gelbeKarte
+    border: 2px solid #CA2
+    border-radius: 8px
+.roteKarte
+    @extend .gelbeKarte
+    border-color: #C22```
+
+.**css**
+```.gelbeKarte, .roteKarte {
+  border: 2px solid #ccaa22;
+  border-radius: 8px; }
+.roteKarte {
+  border-color: #cc2222; }```
+
+-----------------------------------------------------
+
+multiple extends
+================
+
+.**sass**
+```div > a:active
+    text-decoration: none
+nav > a:hover
+    border-bottom: 3px ridge green
+.gallery img:focus
+    opacity: .7
+.activated
+    @extend a:active
+    @extend a:hover
+    @extend img:focus
+    color: #af0```
+
+.**css**
+```div > a:active, div > .activated {
+  text-decoration: none; }
+nav > a:hover, nav > .activated {
+  border-bottom: 3px ridge green; }
+.gallery img:focus, .gallery .activated {
+  opacity: 0.7; }
+.activated {
+  color: #aaff00; }```
+
+-----------------------------------------------------
+
+placeholder selectors
+=====================
+
+.**sass**
+``` .bold
+    @extend %THICK
+.notice p%THICK
+    font-weight: 900```
+
+.**css**
+``` .notice p.bold {
+  font-weight: 900; }```
+
+-----------------------------------------------------
+
+@debug
+======
+
+debug.**sass**
+``` @debug (1 or 0) + (3*3)em ```
+
+» **stderr**
+``` debug.sass:1 DEBUG: 10 em ```
+
+-----------------------------------------------------
+
+@warn
+=====
+
++ weist Zeilen auf *standard error output stream* aus
++ kann mit **-q**, **--quiet** deaktiviert werden
++ nützlich um auf Fehler in **mixins** hinzuweisen
+
+-----------------------------------------------------
+
+@warn - Beispiel
+================
+
+warn.**sass**
+```@mixin plazz-positionierer($x, $y)
+    @if unitless($x)
+        @warn "Promill? Birnen? Mit '#{$x}' kann ich nix anfangen."
+        $x: 1px * $x
+    @if unitless($y)
+        @warn "Gottchen. Das hat wohl einer '#{$y}'s Einheit geklaut."
+        $y: 1px * $y
+    position: relative
+    left: $x
+    top: $y
+.macht.platz
+    @include plazz-positionierer(5, 3px)```
+
+» **stderr**
+```WARNING: Promill? Birnen? Mit '5' kann ich nix anfangen.
+         on line 3 of warn.sass, in 'plazz-positionierer'
+         from line 12 of warn.sass
+.macht.platz {
+  position: relative;
+  left: 5px;
+  top: 3px; }``
+
+-----------------------------------------------------
+
+**grunt**-contrib-sass
+======================
+
+Der Task für den Taskrunner zum SASS bauen
+
+```grunt.initConfig({
+  sass: {                              // Task
+    dist: {                            // Target
+      options: {                       // Target options
+        style: 'expanded'
+      },
+      files: {                         // Dictionary of files
+        'main.css': 'main.scss',       // 'destination': 'source'
+        'widgets.css': 'widgets.scss'
+      }
+    }
+  }
+});
+grunt.loadNpmTasks('grunt-contrib-sass');
+grunt.registerTask('default', ['sass']);
+```
+
+-----------------------------------------------------
+
+sass-**mediaqueries**
+=================
+
+Repo mit vielen media queries.
+
+<img src="https://github-camo.global.ssl.fastly.net/52dbacc2e0a117248ce025b0f4505f5966d37b22/687474703a2f2f706172616e6f6964612e6769746875622e636f6d2f736173732d6d65646961717565726965732f696d616765732f6c6f676f2e6a7067"/>
+
+-----------------------------------------------------
+
+<img src="http://bourbon.io/images/shared/bourbon-logo.png"/>
+==============
+
+Leichtfüßig wie Bourbon, stark wie Sass.
+
+<br>
+
+.**sass**
+```font-family: $lucida-grande```
+
+.**css**
+```font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;```
+
+
+-----------------------------------------------------
+
+Sonstiges
+=========
+
++ Grunt tasks
++ mixin collections
++ verhindert *(unnötige*) Duplikate » ```.selector.selector```
++ produziert keine unlogischen Selektoren, die 0 Treffer erzielen » ```#map#greenMap```
+
+-----------------------------------------------------
+
+
+Sonstiges
+=========
+
++ Grunt tasks
++ mixin collections
++ verhindert *(unnötige*) Duplikate » ```.selector.selector```
++ produziert keine unlogischen Selektoren, die 0 Treffer erzielen » ```#map#greenMap```  
+
+<br>
+
+>> # Der feine Herr **dankt**.
+    
+-->
+</script>
+<script>
+var scripts = document.getElementsByTagName('script');
+for (var i = 0; i < scripts.length; i++){
+    var script = scripts[i];
+    if (script.type != 'text/markdown') continue;
+    var md = script.innerHTML.replace(/^\s<!--*/, '')
+        .replace(/-->\s*$/, '');
+    var markup = new Showdown.converter().makeHtml(md);
+    var slides = markup.split('<hr />');
+    for (var j = 0; j < slides.length; j++)
+        document.write('<div class=slide>' + slides[j] + '</div>');
+}
+w3c_slidy.add_listener(document.body, "touchend", w3c_slidy.mouse_button_click);
+</script>
+<link rel="stylesheet" href="styles/monokai.css">
+<script src="highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
