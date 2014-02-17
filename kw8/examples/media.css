@@ -1,8 +1,0 @@
-.panel {
-  width: 300px; }
-  @media screen {
-    .panel {
-      width: 200px; } }
-    @media screen and (orientation: landscape) {
-      .panel {
-        width: 250px; } }

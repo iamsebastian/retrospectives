@@ -1,8 +1,0 @@
-@mixin left($dist) {
-  float: left;
-  margin-left: $dist;
-}
-
-#oneDiv {
-  @include left(10px);
-}
