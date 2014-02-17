@@ -49,7 +49,7 @@
 
 body.single_slide {
 	position: relative;
-	font-family: 'Aleo', Arial;
+	font-family: 'Voltaire', 'Aleo', Arial;
 	background-color: #262626;
 	color: #F1F0F4;
 }
@@ -60,9 +60,49 @@ div.slide {
 	left: 0;top: 0;bottom: 0;right: 0;
 	padding: 1% 0;
 	width: 91%;
-	height: 600px;
+	/*height: 600px;*/
 	font-size: 1.6rem;
 	/*background-color: hsla(0,0%,0%,.01);*/
+}
+
+div.slide h1[id*=kw],
+div.slide h2[id*=sebastianblei] {
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
+
+div.slide h2[id*=sebastianblei] {
+	font-style: italic;
+	font-size: 100%;	
+}
+
+div.slide ul {
+	margin: 0 0 0 5rem;
+}
+
+	div.slide ul li,
+	div.slide ul li p {
+		margin: 0;
+	}
+	
+	div.slide ul li:before {
+		opacity: .7;
+		content: "~ ";
+		float: left;
+		margin: 0 1rem 0 0;
+	}
+
+	div.slide ul li {
+		font-size: 140%;
+		line-height: 220%;
+		list-style: none;
+		clear: both;
+	}
+
+div.slide blockquote p {
+	font-size: 100%;
+	font-style: italic;
 }
 
 div.slide h1 {
@@ -85,6 +125,26 @@ div.slide strong {
 	font-weight: normal;
 }
 
+div.slide p {
+	transition: .3s;
+}
+
+div.slide a:before {
+	content: "› ";
+}
+
+div.slide a {
+	text-decoration: none;
+	color: #48A65B;
+	transition: .37s;
+}
+
+div.slide a:hover {
+	color: #d0ead5;
+	text-decoration: none;
+	text-shadow: 0 0 rgba(255,255,255,0), -6px -6px 0 red, -4px -4px 0 orange, -2px -2px 0 yellow, 0 0 0 green, 2px 2px 0 blue, 4px 4px 0 indigo, 6px 6px 0 violet;
+}
+
 /*div.slide span {
 	color: #FF424B;
 	background-color: hsla(0,0%,100%,.1);
@@ -93,15 +153,27 @@ div.slide strong {
     border-radius: 1rem 1rem 0;
 }*/
 
+div.slide img[alt="Herr"] {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 300px;
+	margin: auto;
+}
+
+div.slide h1[id*=derfeineherrdankt] {
+	text-align: center;
+}
+
 div.slide span {
 	font-weight: normal;
 }
 
 div.slide pre {
 	/*padding: .8rem 1.2rem;*/
-	background-color: hsla(0,0%,0%,.9);
-	border: 1px dashed hsla(0,0%,100%,.4);
-	border-left: 16px solid hsla(0,0%,100%,.2);
+	background-color: hsla(0,0%,0%,.1);
+	border: none;
+	border-left: none;
 	color: #7DFDCD;
 	font-family: 'FiraMono';
 	font-weight: normal;
@@ -112,4 +184,8 @@ div.slide pre code {
 	font-family: 'FiraMono';
 	font-weight: normal;
 	letter-spacing: .5px;
+}
+
+div.toolbar {
+	opacity: .3;
 }
